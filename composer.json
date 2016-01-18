@@ -1,5 +1,6 @@
 {
     "name": "lkochniss/google-analytic",
+    "description": "The idea of this project is to aggregate google analytics user specific data with content data from wordpress.",
     "license": "proprietary",
     "type": "project",
     "autoload": {
