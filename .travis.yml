@@ -4,7 +4,8 @@ php:
 - 7.0
 before_script:
 - rm composer.lock
-- composer self-update
+- composer self-update -q
+- if [ -n "GITHUB" ]; then composer config github-oauth.github.com ${TOKEN}; fi;
 - composer install -n
 - phpenv rehash
 - cp app/config/parameters.yml.dist app/config/parameters.yml
