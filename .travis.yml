@@ -8,7 +8,11 @@ before_script:
   - composer install
   - phpenv rehash
   - cp app/config/parameters.yml.dist app/config/parameters.yml
+before_install:
+  - pip install --user codecov
 script:
   - php bin/console ca:c --env=test
   - php bin/console security:check
   - php ./vendor/bin/phpunit
+after_success:
+  - codecov
