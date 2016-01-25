@@ -9,14 +9,13 @@ before_script:
 - composer install -n
 - phpenv rehash
 - cp app/config/parameters.yml.dist app/config/parameters.yml
-before_install:
 - pip install --user codecov
 script:
 - php bin/console ca:c --env=test
 - php bin/console security:check
 - php ./vendor/bin/phpunit --coverage-clover=coverage.xml
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+- codecov
 env:
   global:
     secure: abzzQ10q6Hyzo0GxNLJ2LAdhjlxUW1XE/Xlr7E4Pw8S+PZy9zQogi7lDRAZBD00D1NhTUUP69pL4NZOdSXl0fG2WPEvZqQuKdNss4nmGdj5mNffE5zSLFwTtFEdSGy3t6EDhdZ7aT8EqhTNu/Hpob078uBNUR3wHktGRIeDCVV6pjjz6obgwtbGgbKBRBxn2Avg+2lWWJm3LjkzoHRUsQf3SDrxforhl9h5ob88xOaa2oF+N4qzlEuzxKK/iu8GtTrr6aFBw4hhQxuLOP1K5mi0AyrXKuhu84lRyzNlUEIWq7VOK6iDYeeVqeUdqxV/U7bYzj/hsASf3tt0vkaF4yqUNZNoM/q83w+CrXf2i5yazAo5rMkt2RSfE3v3ag5GFnCzhLDqzA4/WwifEZHpUIRDBpAViZtL9qa2R10irrPXqBCS2Xu88eLN/RP2+TtEaMQYdntcTbE+vcRC5fd7S5BY9raZe9outj4lSpDKzEw4bl6MiGZbTTau5gFxi0H1v7Tw61OMnKdnQ34hRqeRGoXPb7iNUooIhtazeqpR1zEdMRcVrhCep9CdgycJMbIDffpzfPpi9rGAqq/rxyT1YhnXJOe4IfM3nh1c+CFXLekiHG2vZx3x1qfA9xFSERqDxx86eK+bcuYzZ8qImnywPQhE4+iFkfhkjws+n+/55Voo=
