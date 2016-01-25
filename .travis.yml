@@ -5,7 +5,7 @@ php:
 before_script:
   - rm composer.lock
   - composer self-update
-  - composer install
+  - composer install -n
   - phpenv rehash
   - cp app/config/parameters.yml.dist app/config/parameters.yml
 before_install:
