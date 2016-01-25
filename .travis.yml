@@ -14,5 +14,6 @@ script:
   - php bin/console ca:c --env=test
   - php bin/console security:check
   - php ./vendor/bin/phpunit
+  - php ./vendor/bin/phpunit --coverage-clover=coverage.xml
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
