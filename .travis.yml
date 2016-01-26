@@ -1,18 +1,37 @@
 language: php
-php:
-- 5.6
-- 7.0
-before_script:
+
+matrix:
+  include:
+    - php: 5.6
+      env: CODECOV=true CODESNIFF=true
+    - php: 7.0
+      env: CODECOV=true CODESNIFF=false
+
+cache:
+  directories:
+  - vendor
+  - $HOME/.composer/cache
+
+before_install:
 - rm composer.lock
 - composer self-update -q
+- if [ "${CODECOV}" = "true" ]; then pip install --user codecov; fi;
+- if [ "${CODESNIFF}" = "true" ]; then pear install pear/PHP_CodeSniffer; pyrus install pear/PHP_CodeSniffer; fi;
+- phpenv rehash
+
+before_script:
 - if [ -n "GITHUB" ]; then composer config github-oauth.github.com ${GITHUB}; fi;
 - composer install -n
-- phpenv rehash
 - cp app/config/parameters.yml.dist app/config/parameters.yml
-- pip install --user codecov
-script:
 - php bin/console ca:c --env=test
+
+script:
 - php bin/console security:check
-- php ./vendor/bin/phpunit --coverage-clover=coverage.xml
+- if [ "${CODESNIFF}" = "true" ]; then phpcs --standard=PSR1,PSR2 src -s; fi;
+- if [ "${CODECOV}" = "true" ]; then php ./vendor/bin/phpunit --coverage-clover=coverage.xml; else php ./vendor/bin/phpunit; fi;
+
 after_success:
 - codecov
+env:
+  global:
+    secure: abzzQ10q6Hyzo0GxNLJ2LAdhjlxUW1XE/Xlr7E4Pw8S+PZy9zQogi7lDRAZBD00D1NhTUUP69pL4NZOdSXl0fG2WPEvZqQuKdNss4nmGdj5mNffE5zSLFwTtFEdSGy3t6EDhdZ7aT8EqhTNu/Hpob078uBNUR3wHktGRIeDCVV6pjjz6obgwtbGgbKBRBxn2Avg+2lWWJm3LjkzoHRUsQf3SDrxforhl9h5ob88xOaa2oF+N4qzlEuzxKK/iu8GtTrr6aFBw4hhQxuLOP1K5mi0AyrXKuhu84lRyzNlUEIWq7VOK6iDYeeVqeUdqxV/U7bYzj/hsASf3tt0vkaF4yqUNZNoM/q83w+CrXf2i5yazAo5rMkt2RSfE3v3ag5GFnCzhLDqzA4/WwifEZHpUIRDBpAViZtL9qa2R10irrPXqBCS2Xu88eLN/RP2+TtEaMQYdntcTbE+vcRC5fd7S5BY9raZe9outj4lSpDKzEw4bl6MiGZbTTau5gFxi0H1v7Tw61OMnKdnQ34hRqeRGoXPb7iNUooIhtazeqpR1zEdMRcVrhCep9CdgycJMbIDffpzfPpi9rGAqq/rxyT1YhnXJOe4IfM3nh1c+CFXLekiHG2vZx3x1qfA9xFSERqDxx86eK+bcuYzZ8qImnywPQhE4+iFkfhkjws+n+/55Voo=
