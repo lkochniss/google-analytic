@@ -1,5 +1,9 @@
 language: php
 
+branches:
+  except:
+    - book-branch
+
 matrix:
   include:
     - php: 5.6
