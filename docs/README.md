@@ -1,4 +1,0 @@
-
-# Table of Content
-
-## Installation
