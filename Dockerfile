@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM php:5.6-cli
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -25,8 +25,8 @@ ADD etc/supervisor/conf.d/*.conf /etc/supervisor/conf.d/
 
 ADD etc/mysql/my.cnf /etc/mysql/my.cnf
 
-RUN echo "date.timezone = Europe/Paris" >> /etc/php5/cli/php.ini
-RUN echo "date.timezone = Europe/Paris" >> /etc/php5/fpm/php.ini
+RUN echo "date.timezone = Europe/Berlin" >> /etc/php5/cli/php.ini
+RUN echo "date.timezone = Europe/Berlin" >> /etc/php5/fpm/php.ini
 
 # Expose ports
 EXPOSE 80
