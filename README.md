@@ -1,7 +1,7 @@
-google-analytic
+Google Analytics with WordPress
 =======
 
-The idea of this project is to aggregate google analytics user specific data with content data from wordpress.
+The idea of this project is to aggregate Google Analytics user specific data with content data from WordPress.
 
 ## Travis CI Build Status and SensioLabsInsight (Branch:master)
 [![Build Status](https://travis-ci.org/lkochniss/google-analytic.svg?branch=master)](https://travis-ci.org/lkochniss/google-analytic)
