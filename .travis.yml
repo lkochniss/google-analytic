@@ -27,8 +27,8 @@ before_script:
 
 script:
 - php bin/console security:check
-- if [ "${CODECOV}" = "true" ]; then php ./vendor/bin/phpunit --coverage-clover=coverage.xml; else php ./vendor/bin/phpunit; fi;
 - if [ "${CODESNIFF}" = "true" ]; then phpcs --standard=PSR1,PSR2 src -s; fi;
+- if [ "${CODECOV}" = "true" ]; then php ./vendor/bin/phpunit --coverage-clover=coverage.xml; else php ./vendor/bin/phpunit; fi;
 
 after_success:
 - if [ "${CODECOV}" = "true" ]; then codecov; fi;
