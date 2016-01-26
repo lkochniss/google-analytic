@@ -3,9 +3,9 @@ language: php
 matrix:
   include:
     - php: 5.6
-      env: CODESNIFF=true CODECOV=true
+      env: CODECOV=true CODESNIFF=true
     - php: 7.0
-      env: CODESNIFF=false CODECOV=true
+      env: CODECOV=true
 
 cache:
   directories:
@@ -15,8 +15,8 @@ cache:
 before_install:
 - rm composer.lock
 - composer self-update -q
-- if [ "CODECOV" == "true" ]; then pip install --user codecov; fi;
-- if [ "CODESNIFF" == "true" ]; then pear install pear/PHP_CodeSniffer; pyrus install pear/PHP_CodeSniffer; fi;
+- if [ -n "CODECOV" ]; then pip install --user codecov; fi;
+- if [ -n "CODESNIFF" ]; then pear install pear/PHP_CodeSniffer; pyrus install pear/PHP_CodeSniffer; fi;
 - phpenv rehash
 
 before_script:
@@ -27,12 +27,11 @@ before_script:
 
 script:
 - php bin/console security:check
-- if [ "CODECOV" == "true" ]; then php ./vendor/bin/phpunit --coverage-clover=coverage.xml; fi;
-- if [ "CODECOV" == "false" ]; then php ./vendor/bin/phpunit; fi;
-- if [ "CODESNIFF" == "true" ]; then phpcs --standard=PSR1,PSR2 src -s; fi;
+- if [ -n "CODECOV" ]; then php ./vendor/bin/phpunit --coverage-clover=coverage.xml; else php ./vendor/bin/phpunit; fi;
+- if [ -n "CODESNIFF" ]; then phpcs --standard=PSR1,PSR2 src -s; fi;
 
 after_success:
-- if [ "CODECOV" == "true" ]; then codecov; fi;
+- if [ -n "CODECOV" ]; then codecov; fi;
 
 env:
   global:
