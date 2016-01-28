@@ -1,3 +1,7 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+google_api:
+    resource: routing/googleApi.yml
+    prefix:   /googleApi

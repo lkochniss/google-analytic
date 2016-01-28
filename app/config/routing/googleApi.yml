@@ -1,0 +1,7 @@
+google_api_authenticate:
+    path:     /authenticate
+    defaults: { _controller: AppBundle:GoogleApi:authenticate }
+
+google_api_authenticate_callback:
+    path:     /authenticate/callback
+    defaults: { _controller: AppBundle:GoogleApi:authenticateCallback }
