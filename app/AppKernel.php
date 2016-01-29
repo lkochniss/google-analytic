@@ -12,7 +12,7 @@ class AppKernel extends Kernel
     public function __construct($environment, $debug)
     {
         parent::__construct($environment, $debug);
-        date_default_timezone_set( 'Europe/Berlin' );
+        date_default_timezone_set('Europe/Berlin');
     }
 
     public function registerBundles()
@@ -25,6 +25,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new AppBundle\AppBundle(),
         ];
 

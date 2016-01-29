@@ -1,0 +1,9 @@
+{
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@kochniss.com",
+    "roles": {
+        "Admin" : "Admin"
+    },
+    "isActive" : "1"
+}

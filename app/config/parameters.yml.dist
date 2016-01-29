@@ -15,5 +15,8 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    session_name:      WPGOOGLE
+
     # A secret key that's used to generate certain security-related tokens
     secret:            bs9gJustNgForcfSensio9EInsightCoTo3sKeepxH4QuietRoH
+    client_id:         12345

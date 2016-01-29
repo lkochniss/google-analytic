@@ -1,12 +1,13 @@
 <?php
 
+
 namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
-class DefaultControllerTest extends WebTestCase
+class GoogleApiControllerTest extends WebTestCase
 {
     private $client = null;
 
@@ -16,16 +17,28 @@ class DefaultControllerTest extends WebTestCase
     }
 
     /**
-     * Tests the / index page.
+     * Tests the authenticate action within the GoogleApiController
+     * The authenticate action will redirect to Google Oauth2 identification
      */
-    public function testIndex()
+    public function testAuthenticateAction()
     {
-        $this->login();
+        $this->logIn();
 
-        $crawler = $this->client->request('GET', '/');
+        $crawler = $this->client->request('GET', '/googleApi/authenticate');
+
+        $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * Tests the authenticateCallback action within the GoogleApiController
+     */
+    public function testAuthenticateCallbackAction()
+    {
+        $this->logIn();
+
+        $crawler = $this->client->request('GET', '/googleApi/authenticate/callback');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
     }
 
     /**
