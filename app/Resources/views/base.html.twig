@@ -2,15 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}int.ent news{% endblock %}</title>
+    <title>{% block title %}Google Analytic{% endblock %}</title>
     {% block stylesheets %}
-        {#{% stylesheets#}
-        {#'css/bootstrap.css'#}
-        {#'css/content.css'#}
-        {#'css/sidebar.css'#}
-        {#filter='cssrewrite' %}#}
-        {#<link rel="stylesheet" href="{{ asset_url }}"/>#}
-        {#{% endstylesheets %}#}
+        {% stylesheets
+            '../vendor/twitter/bootstrap/dist/css/bootstrap.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
@@ -18,12 +16,12 @@
 {% block body %}
 {% endblock %}
 {% block javascripts %}
-    {#{% javascripts#}
-    {#'js/jquery-2.1.4.min.js'#}
-    {#'js/bootstrap.min.js'#}
-    {#%}#}
-    {#<script src="{{ asset_url }}"></script>#}
-    {#{% endjavascripts %}#}
+    {% javascripts
+        '../vendor/components/jquery/jquery.js'
+        '../vendor/twitter/bootstrap/dist/js/bootstrap.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 </body>
 </html>
