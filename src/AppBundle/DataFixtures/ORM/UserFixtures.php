@@ -50,7 +50,7 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface, C
         $plainPassword = $userData['password'];
 
         $encoder = $this->container->get('security.password_encoder');
-        $encodedPassword = $encoder->encodePassword($user,$plainPassword);
+        $encodedPassword = $encoder->encodePassword($user, $plainPassword);
 
         $user->setPassword($encodedPassword);
 
@@ -60,7 +60,7 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface, C
             $user->addRole($this->getReference('role-'.$role));
         }
 
-        $manager->getRepository('AppBundle:User')->save($user,$this->getReference('user-Admin'));
+        $manager->getRepository('AppBundle:User')->save($user, $this->getReference('user-Admin'));
     }
 
     /**
