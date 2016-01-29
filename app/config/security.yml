@@ -17,7 +17,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        backend:
+        secured_area:
             anonymous : ~
             pattern: ^/
             form_login:
