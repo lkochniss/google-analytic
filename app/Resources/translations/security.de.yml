@@ -1,0 +1,5 @@
+security:
+    login:          Analytics Login
+    password:       Passwort
+    submit:         Login
+    username:       Benutzer

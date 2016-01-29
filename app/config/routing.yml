@@ -3,16 +3,16 @@ app:
     type:     annotation
     methods:  [GET]
 
-intent_backend_login:
+login:
     path:   /login
     defaults: { _controller: AppBundle:Security:login }
     methods:  [GET]
 
-intent_backend_login_check:
+login_check:
     path:   /login_check
     methods:  [POST]
 
-intent_backend_logout:
+logout:
     path:   /logout
     methods:  [GET]
 
