@@ -15,6 +15,7 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    locale:            de
     session_name:      WPGOOGLE
 
     # A secret key that's used to generate certain security-related tokens
