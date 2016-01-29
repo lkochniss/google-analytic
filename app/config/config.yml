@@ -55,12 +55,15 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
-
+        auto_mapping: false
+        mappings:
+            AppBundle:
+                type: yml
+                prefix: AppBundle\Entity
+                dir: "Resources/config/doctrine"
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
