@@ -1,0 +1,18 @@
+AppBundle\Entity\AbstractModel:
+    type: mappedSuperclass
+
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        modifiedAt:
+            column: modified_at
+            type: datetime
+            nullable: false
+    lifecycleCallbacks:
+        prePersist:
+            - setModifiedAt
+            - setCreatedAt
+        preUpdate:
+            - setModifiedAt
