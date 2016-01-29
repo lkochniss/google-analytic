@@ -248,7 +248,7 @@ class User extends AbstractModel implements AdvancedUserInterface, EquatableInte
     {
         $now = new \DateTime();
 
-        return $this->validUntil < $now;
+        return $this->validUntil > $now;
     }
 
     /**
@@ -284,7 +284,7 @@ class User extends AbstractModel implements AdvancedUserInterface, EquatableInte
     }
 
     /**
-     * @param UserInterface $user Chef if roles are equal.
+     * @param UserInterface $user Check if roles are equal.
      * @return boolean
      */
     public function isEqualTo(UserInterface $user)

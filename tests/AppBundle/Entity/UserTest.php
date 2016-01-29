@@ -10,7 +10,6 @@ use AppBundle\Entity\Role;
 
 /**
  * Class UserTest
- * @package AppBundle\Tests\Controller
  */
 class UserTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,6 +23,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $username = 'Username';
         $user->setUsername($username);
         $this->assertEquals($user->getUsername(), $username);
+        $this->assertEquals($user->__toString(), $username);
 
         $password = '1234';
         $user->setPassword($password);
@@ -36,10 +36,12 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $active = 1;
         $user->setActive($active);
         $this->assertEquals($user->isActive(), $active);
+        $this->assertEquals($user->isEnabled(), $active);
 
-        $now = new \DateTime();
-        $user->setValidUntil($now);
-        $this->assertEquals($user->getValidUntil(), $now);
+        $valid = new \DateTime('+1 day');
+        $user->setValidUntil($valid);
+        $this->assertEquals($user->getValidUntil(), $valid);
+        $this->assertTrue($user->isAccountNonexpired());
 
         $user->setCreatedAt();
         $this->assertNotEmpty($user->getCreatedAt());
@@ -54,6 +56,13 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
         $user->removeRole($role);
         $this->assertEquals($user->getRoles(), array());
+
+        $this->assertNull($user->getSalt());
+
+        $this->assertTrue($user->isAccountNonLocked());
+        $this->assertTrue($user->isCredentialsNonExpired());
+
+        $this->assertNull($user->eraseCredentials());
 
         return null;
     }

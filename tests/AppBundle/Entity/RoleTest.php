@@ -10,12 +10,12 @@ use AppBundle\Entity\User;
 
 /**
  * Class RoleTest
- * @package AppBundle\Tests\Controller
  */
 class RoleTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @return null
+     * @covers AppBundle\Entity\Role
      */
     public function testEntity()
     {
@@ -24,6 +24,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
         $name = 'Role 1';
         $role->setName($name);
         $this->assertEquals($role->getName(), $name);
+        $this->assertEquals($role->__toString(), $name);
 
         $roleName = 'ROLE_ADMIN';
         $role->setRole($roleName);

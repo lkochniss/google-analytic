@@ -1,10 +1,15 @@
 <?php
 
-
+/**
+ * @package Tests\AppBundle\Controller
+ */
 namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class SecurityControllerTest
+ */
 class SecurityControllerTest extends WebTestCase
 {
     /**
