@@ -21,13 +21,9 @@ class SecurityControllerTest extends WebTestCase
 
         $crawler = $client->request(
             'GET',
-            '/login',
-            array(),
-            array(),
-            array('HTTPS' => 'on')
+            '/login'
         );
 
-        var_dump($client->getRequest()->getContent());
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 }
