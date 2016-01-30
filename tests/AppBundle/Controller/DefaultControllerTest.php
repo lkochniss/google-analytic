@@ -28,10 +28,15 @@ class DefaultControllerTest extends WebTestCase
     {
         $this->login();
 
-        $crawler = $this->client->request('GET', '/');
+        $crawler = $this->client->request(
+            'GET',
+            '/',
+            array(),
+            array(),
+            array('HTTPS' => 'on')
+        );
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
     }
 
     /**

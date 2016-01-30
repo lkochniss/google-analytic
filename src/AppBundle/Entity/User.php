@@ -58,11 +58,6 @@ class User extends AbstractModel implements AdvancedUserInterface, EquatableInte
     private $roles;
 
     /**
-     * @var ArrayCollection
-     */
-    private $articles;
-
-    /**
      * set user active
      */
     public function __construct()
@@ -248,11 +243,9 @@ class User extends AbstractModel implements AdvancedUserInterface, EquatableInte
     {
         $now = new \DateTime();
 
-        if (is_null($this->validUntil)){
-
+        if (is_null($this->validUntil)) {
             return true;
-        }else{
-
+        } else {
             return $this->validUntil > $now;
         }
     }

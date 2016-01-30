@@ -29,7 +29,12 @@ class GoogleApiControllerTest extends WebTestCase
     {
         $this->logIn();
 
-        $crawler = $this->client->request('GET', '/googleApi/authenticate');
+        $crawler = $this->client->request('GET',
+            '/googleApi/authenticate',
+            array(),
+            array(),
+            array('HTTPS' => 'on')
+        );
 
         $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
     }
@@ -41,7 +46,13 @@ class GoogleApiControllerTest extends WebTestCase
     {
         $this->logIn();
 
-        $crawler = $this->client->request('GET', '/googleApi/authenticate/callback');
+        $crawler = $this->client->request(
+            'GET',
+            '/googleApi/authenticate/callback',
+            array(),
+            array(),
+            array('HTTPS' => 'on')
+        );
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }

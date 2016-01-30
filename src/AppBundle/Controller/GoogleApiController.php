@@ -21,7 +21,9 @@ class GoogleApiController extends Controller
         $client = new \Google_Client();
         $client->setClientId($this->getParameter('client_id'));
         $client->addScope(\Google_Service_Drive::DRIVE_METADATA_READONLY);
-        $client->setRedirectUri($this->generateUrl('google_api_authenticate_callback'));
+        $client->setRedirectUri(
+            urlencode('http://'.$request->getHost() . $this->generateUrl('google_api_authenticate_callback'))
+        );
 
         return $this->redirect($client->createAuthUrl());
     }
