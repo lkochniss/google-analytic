@@ -248,7 +248,13 @@ class User extends AbstractModel implements AdvancedUserInterface, EquatableInte
     {
         $now = new \DateTime();
 
-        return $this->validUntil > $now;
+        if (is_null($this->validUntil)){
+
+            return true;
+        }else{
+
+            return $this->validUntil > $now;
+        }
     }
 
     /**
