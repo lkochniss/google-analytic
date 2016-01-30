@@ -27,6 +27,7 @@ class SecurityControllerTest extends WebTestCase
             array('HTTPS' => 'on')
         );
 
+        var_dump($client->getRequest()->getContent());
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 }
