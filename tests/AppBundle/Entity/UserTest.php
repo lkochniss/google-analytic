@@ -49,7 +49,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $user->setModifiedAt();
         $this->assertNotEmpty($user->getModifiedAt());
 
-        $role = $this->getMock(Role::class);
+        $role = $this->getMockBuilder(Role::class)->getMock();
 
         $user->addRole($role);
         $this->assertEquals($user->getRoles(), array($role));

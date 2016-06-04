@@ -30,7 +30,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
         $role->setRole($roleName);
         $this->assertEquals($role->getRole(), $roleName);
 
-        $user = $this->getMock(User::class);
+        $user = $this->getMockBuilder(User::class)->getMock();
 
         $role->addUser($user);
         $this->assertEquals($role->getUsers(), array($user));
