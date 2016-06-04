@@ -35,7 +35,7 @@ class SecurityControllerTest extends WebTestCase
         $this->assertEquals(
           200,
           $client->getResponse()->getStatusCode(),
-          $this->client->getResponse()->getContent()
+          $client->getResponse()->getContent()
         );
     }
 }
