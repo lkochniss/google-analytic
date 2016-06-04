@@ -21,3 +21,4 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            bs9gJustNgForcfSensio9EInsightCoTo3sKeepxH4QuietRoH
     client_auth_file:  pathAndNameOfClientAuthFile
+    analytics_id:      theAnalyticsIdAfterThePInTheUrl

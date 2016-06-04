@@ -4,3 +4,4 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '%client_auth_file%'
+            - '%analytics_id%'
