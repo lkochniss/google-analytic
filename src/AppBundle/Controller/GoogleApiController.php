@@ -59,7 +59,7 @@ class GoogleApiController extends Controller
     /**
      * @return GoogleApiTokenRepository
      */
-    private function getGoogleApiTokenRepository() 
+    private function getGoogleApiTokenRepository()
     {
         return $this->getDoctrine()->getManager()->getRepository('AppBundle:GoogleApiToken');
     }
