@@ -25,28 +25,32 @@ class GoogleApiToken extends AbstractModel
     /**
      * @return String
      */
-    public function getName() {
+    public function getName() 
+    {
         return $this->name;
     }
 
     /**
      * @param String $name
      */
-    public function setName($name) {
+    public function setName($name) 
+    {
         $this->name = $name;
     }
 
     /**
      * @return String
      */
-    public function getToken() {
+    public function getToken() 
+    {
         return $this->token;
     }
 
     /**
      * @param String $token
      */
-    public function setToken($token) {
+    public function setToken($token) 
+    {
         $this->token = $token;
     }
 }

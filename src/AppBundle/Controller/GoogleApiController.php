@@ -39,11 +39,13 @@ class GoogleApiController extends Controller
         /**
          * @var GoogleApiToken $token
          */
-        $token = $this->getGoogleApiTokenRepository()->findOneBy(array(
+        $token = $this->getGoogleApiTokenRepository()->findOneBy(
+            array(
             'name' => 'Google Analytics Token'
-        ));
+            )
+        );
 
-        if (is_null($token)){
+        if (is_null($token)) {
             $token = new GoogleApiToken();
             $token->setName('Google Analytics Token');
         }
@@ -57,7 +59,8 @@ class GoogleApiController extends Controller
     /**
      * @return GoogleApiTokenRepository
      */
-    private function getGoogleApiTokenRepository() {
+    private function getGoogleApiTokenRepository() 
+    {
         return $this->getDoctrine()->getManager()->getRepository('AppBundle:GoogleApiToken');
     }
 }
