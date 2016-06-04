@@ -23,6 +23,7 @@ class DefaultControllerTest extends WebTestCase
 
     /**
      * Tests the / index page.
+     * @covers AppBundle\Controller\DefaultController::index
      */
     public function testIndex()
     {

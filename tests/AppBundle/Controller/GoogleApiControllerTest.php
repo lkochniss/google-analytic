@@ -24,6 +24,7 @@ class GoogleApiControllerTest extends WebTestCase
     /**
      * Tests the authenticate action within the GoogleApiController
      * The authenticate action will redirect to Google Oauth2 identification
+     * @covers AppBundle\Controller\GoogleApiController::authenticate
      */
     public function testAuthenticateAction()
     {
@@ -41,6 +42,7 @@ class GoogleApiControllerTest extends WebTestCase
 
     /**
      * Tests the authenticateCallback action within the GoogleApiController
+     * @covers AppBundle\Controller\GoogleApiController::authenticateCallback
      */
     public function testAuthenticateCallbackAction()
     {

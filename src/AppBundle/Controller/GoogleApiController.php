@@ -5,14 +5,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\GoogleApiToken;
-use AppBundle\Repository\GoogleApiTokenRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class GoogleApiController
  */
-class GoogleApiController extends Controller
+class GoogleApiController extends AbstractCrudController
 {
     /**
      * @param Request $request
@@ -39,11 +37,7 @@ class GoogleApiController extends Controller
         /**
          * @var GoogleApiToken $token
          */
-        $token = $this->getGoogleApiTokenRepository()->findOneBy(
-            array(
-            'name' => 'Google Analytics Token'
-            )
-        );
+        $token = $this->getGoogleApiToken();
 
         if (is_null($token)) {
             $token = new GoogleApiToken();
@@ -54,13 +48,5 @@ class GoogleApiController extends Controller
         $this->getGoogleApiTokenRepository()->save($token);
 
         return $this->redirectToRoute('app');
-    }
-
-    /**
-     * @return GoogleApiTokenRepository
-     */
-    private function getGoogleApiTokenRepository()
-    {
-        return $this->getDoctrine()->getManager()->getRepository('AppBundle:GoogleApiToken');
     }
 }

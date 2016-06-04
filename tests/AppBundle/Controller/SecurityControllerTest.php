@@ -14,6 +14,7 @@ class SecurityControllerTest extends WebTestCase
 {
     /**
      * Tests the login action within the SecurityController
+     * @covers AppBundle\Controller\SecurityController::login
      */
     public function testLoginAction()
     {
