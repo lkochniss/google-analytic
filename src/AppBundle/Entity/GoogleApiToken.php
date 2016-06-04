@@ -25,7 +25,7 @@ class GoogleApiToken extends AbstractModel
     /**
      * @return String
      */
-    public function getName() 
+    public function getName()
     {
         return $this->name;
     }
@@ -33,7 +33,7 @@ class GoogleApiToken extends AbstractModel
     /**
      * @param String $name
      */
-    public function setName($name) 
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -41,7 +41,7 @@ class GoogleApiToken extends AbstractModel
     /**
      * @return String
      */
-    public function getToken() 
+    public function getToken()
     {
         return $this->token;
     }
@@ -49,7 +49,7 @@ class GoogleApiToken extends AbstractModel
     /**
      * @param String $token
      */
-    public function setToken($token) 
+    public function setToken($token)
     {
         $this->token = $token;
     }
