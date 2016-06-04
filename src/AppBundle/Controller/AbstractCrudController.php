@@ -19,11 +19,12 @@ abstract class AbstractCrudController extends Controller
      * @return null|GoogleApiToken
      *   Returns the token or null
      */
-    protected function getGoogleApiToken() {
+    protected function getGoogleApiToken()
+    {
         return $this->getGoogleApiTokenRepository()->findOneBy(
-          array(
+            array(
             'name' => 'Google Analytics Token'
-          )
+            )
         );
     }
 
