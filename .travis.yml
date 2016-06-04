@@ -5,9 +5,9 @@ branches:
 matrix:
   include:
   - php: 5.6
-    env: CODECOV=true CODESNIFF=true MERGE=true
+    env: CODECOV=true CODESNIFF=true
   - php: 7.0
-    env: CODECOV=false CODESNIFF=false MERGE=false
+    env: CODECOV=false CODESNIFF=false
 cache:
   directories:
   - vendor
