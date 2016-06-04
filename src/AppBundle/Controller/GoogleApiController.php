@@ -34,7 +34,6 @@ class GoogleApiController extends Controller
     public function authenticateCallbackAction(Request $request)
     {
         if (!$request->query->has('code')) {
-
             return $this->redirectToRoute('app');
         }
         /**
