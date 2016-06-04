@@ -5,12 +5,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\GoogleApiToken;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class GoogleApiController
  */
-class GoogleApiController extends AbstractCrudController
+class GoogleApiController extends Controller
 {
     /**
      * @param Request $request
@@ -34,10 +35,14 @@ class GoogleApiController extends AbstractCrudController
      */
     public function authenticateCallbackAction(Request $request)
     {
+        if (!$request->query->has('code')) {
+
+            return $this->redirectToRoute('app');
+        }
         /**
          * @var GoogleApiToken $token
          */
-        $token = $this->getGoogleApiToken();
+        $token = $this->getGoogleApiService()->getGoogleApiToken();
 
         if (is_null($token)) {
             $token = new GoogleApiToken();
@@ -45,8 +50,13 @@ class GoogleApiController extends AbstractCrudController
         }
 
         $token->setToken($request->query->get('code'));
-        $this->getGoogleApiTokenRepository()->save($token);
+        $this->getGoogleApiService()->getGoogleApiTokenRepository()->save($token);
 
         return $this->redirectToRoute('app');
+    }
+
+    private function getGoogleApiService()
+    {
+        return $this->get('app.googleapi.service');
     }
 }

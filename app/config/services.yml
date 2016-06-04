@@ -1,3 +1,5 @@
 services:
     app.googleapi.service:
         class: AppBundle\Service\GoogleApiService
+        arguments:
+            - '@doctrine.orm.entity_manager'
