@@ -49,7 +49,7 @@ class GoogleApiController extends Controller
 
         $client = $this->getGoogleApiService()->getClient();
         $client->setRedirectUri(
-          ('https://' . $request->getHost() . $this->generateUrl('google_api_authenticate_callback'))
+            ('https://' . $request->getHost() . $this->generateUrl('google_api_authenticate_callback'))
         );
         $client->authenticate($request->query->get('code'));
 

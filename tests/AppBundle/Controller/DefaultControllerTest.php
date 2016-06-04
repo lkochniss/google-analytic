@@ -8,12 +8,16 @@ namespace Tests\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
  * Class DefaultControllerTest
  */
 class DefaultControllerTest extends WebTestCase
 {
+    /**
+     * @var Client $client
+     */
     private $client = null;
 
     public function setUp()
@@ -37,7 +41,11 @@ class DefaultControllerTest extends WebTestCase
             array('HTTPS' => 'on')
         );
 
-        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertEquals(
+          200,
+          $this->client->getResponse()->getStatusCode(),
+          $this->client->getResponse()->getContent()
+        );
     }
 
     /**

@@ -6,6 +6,7 @@
 namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
  * Class SecurityControllerTest
@@ -18,6 +19,9 @@ class SecurityControllerTest extends WebTestCase
      */
     public function testLoginAction()
     {
+        /**
+         * @var Client $client
+         */
         $client = static::createClient();
 
         $crawler = $client->request(
@@ -28,6 +32,10 @@ class SecurityControllerTest extends WebTestCase
             array('HTTPS' => 'on')
         );
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertEquals(
+          200,
+          $client->getResponse()->getStatusCode(),
+          $this->client->getResponse()->getContent()
+        );
     }
 }
