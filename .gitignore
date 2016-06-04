@@ -36,5 +36,15 @@
 # Composer PHAR
 /composer.phar
 
+# CodeCoverage
+/coverage/*
+coverage.xml
+
+# ServerDirs
+/img/*
+/cgi-bin/*
+/test/*
+/web/googledca*
+
 /web/css/*
 /web/js/*

@@ -4,6 +4,8 @@
  */
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\GoogleApiToken;
+use AppBundle\Repository\GoogleApiTokenRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,12 +36,28 @@ class GoogleApiController extends Controller
      */
     public function authenticateCallbackAction(Request $request)
     {
+        /**
+         * @var GoogleApiToken $token
+         */
+        $token = $this->getGoogleApiTokenRepository()->findOneBy(array(
+            'name' => 'Google Analytics Token'
+        ));
 
-        return $this->render(
-            ':googleApi:authenticate_callback.html.twig',
-            array(
-               'code' => $request->query->get('code')
-            )
-        );
+        if (is_null($token)){
+            $token = new GoogleApiToken();
+            $token->setName('Google Analytics Token');
+        }
+
+        $token->setToken($request->query->get('code'));
+        $this->getGoogleApiTokenRepository()->save($token);
+
+        return $this->redirectToRoute('app');
+    }
+
+    /**
+     * @return GoogleApiTokenRepository
+     */
+    private function getGoogleApiTokenRepository() {
+        return $this->getDoctrine()->getManager()->getRepository('AppBundle:GoogleApiToken');
     }
 }

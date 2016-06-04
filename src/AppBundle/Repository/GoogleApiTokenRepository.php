@@ -6,9 +6,9 @@
 namespace AppBundle\Repository;
 
 /**
- * Class RoleRepository
+ * Class GoogleApiTokenRepository
  */
-class RoleRepository extends AbstractRepository
+class GoogleApiTokenRepository extends AbstractRepository
 {
 
 }
