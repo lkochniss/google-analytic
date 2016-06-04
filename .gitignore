@@ -45,6 +45,8 @@ coverage.xml
 /cgi-bin/*
 /test/*
 /web/googledca*
+/client_secret*
 
+# Assets
 /web/css/*
 /web/js/*

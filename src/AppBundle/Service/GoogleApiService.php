@@ -14,17 +14,40 @@ use Doctrine\ORM\EntityManager;
  */
 class GoogleApiService
 {
-
     /** @var  EntityManager */
     private $manager;
 
     /**
-     * @param EntityManager $manager Get the entityManager.
+     * @var \Google_Client $client
      */
-    public function __construct(EntityManager $manager)
+    private $client;
+
+    /**
+     * @param EntityManager $manager Get the entityManager.
+     * @param string $clientAuthFile Get the GoogleApi AuthFile name.
+     */
+    public function __construct(EntityManager $manager, $clientAuthFile)
     {
         $this->manager = $manager;
+        $this->client =  new \Google_Client();
+        $this->client->setAuthConfigFile(__DIR__ . '/../../../' .$clientAuthFile);
+        $this->client->addScope(\Google_Service_Analytics::ANALYTICS_PROVISION);
+
+        if(!is_null($this->getGoogleApiToken())){
+          $token['access_token'] = $this->getGoogleApiToken()->getToken();
+          $token['refresh_token'] = $this->getGoogleApiToken()->getToken();
+          $this->client->setAccessToken(json_encode($token));
+        }
+
     }
+
+    public function getData() {
+        $client = $this->client;
+        $service = new \Google_Service_Analytics($client);
+        $properties = $service->management_webproperties->listManagementWebproperties("~all");
+        var_dump($properties);
+    }
+
 
     /**
      * Get the Google API Token
@@ -39,6 +62,10 @@ class GoogleApiService
             'name' => 'Google Analytics Token'
             )
         );
+    }
+
+    public function getClient() {
+        return $this->client;
     }
 
     /**

@@ -32,7 +32,7 @@ class GoogleApiCommand extends ContainerAwareCommand
    */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->getContainer()->get('app.googleapi.service');
+        $this->getContainer()->get('app.googleapi.service')->getData();
     
         return true;
     }

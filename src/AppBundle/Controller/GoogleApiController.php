@@ -19,11 +19,9 @@ class GoogleApiController extends Controller
      */
     public function authenticateAction(Request $request)
     {
-        $client = new \Google_Client();
-        $client->setClientId($this->getParameter('client_id'));
-        $client->addScope(\Google_Service_Analytics::ANALYTICS_READONLY);
+        $client = $this->getGoogleApiService()->getClient();
         $client->setRedirectUri(
-            ('https://'.$request->getHost() . $this->generateUrl('google_api_authenticate_callback'))
+            ('https://' . $request->getHost() . $this->generateUrl('google_api_authenticate_callback'))
         );
 
         return $this->redirect($client->createAuthUrl());
@@ -49,7 +47,13 @@ class GoogleApiController extends Controller
             $token->setName('Google Analytics Token');
         }
 
-        $token->setToken($request->query->get('code'));
+        $client = $this->getGoogleApiService()->getClient();
+        $client->setRedirectUri(
+          ('https://' . $request->getHost() . $this->generateUrl('google_api_authenticate_callback'))
+        );
+        $client->authenticate($request->query->get('code'));
+
+        $token->setToken($client->getAccessToken());
         $this->getGoogleApiService()->getGoogleApiTokenRepository()->save($token);
 
         return $this->redirectToRoute('app');
