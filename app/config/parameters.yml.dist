@@ -15,7 +15,10 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    locale:            de
     session_name:      WPGOOGLE
 
     # A secret key that's used to generate certain security-related tokens
     secret:            bs9gJustNgForcfSensio9EInsightCoTo3sKeepxH4QuietRoH
+    client_auth_file:  pathAndNameOfClientAuthFile
+    analytics_id:      theAnalyticsIdAfterThePInTheUrl

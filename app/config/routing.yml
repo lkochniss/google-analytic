@@ -1,4 +1,21 @@
 app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+    path:   /
+    defaults: { _controller: AppBundle:Default:index }
     methods:  [GET]
+
+login:
+    path:   /login
+    defaults: { _controller: AppBundle:Security:login }
+    methods:  [GET]
+
+login_check:
+    path:   /login_check
+    methods:  [POST]
+
+logout:
+    path:   /logout
+    methods:  [GET]
+
+google_api:
+    resource: routing/googleApi.yml
+    prefix:   /googleApi

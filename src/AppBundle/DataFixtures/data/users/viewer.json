@@ -1,0 +1,9 @@
+{
+    "username": "viewer",
+    "password": "viewer",
+    "email": "admin@kochniss.com",
+    "roles": {
+        "Viewer" : "Viewer"
+    },
+    "isActive" : "0"
+}
