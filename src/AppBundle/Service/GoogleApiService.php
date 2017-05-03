@@ -55,12 +55,12 @@ class GoogleApiService
         $metrics = 'ga:visits,ga:pageviews,ga:bounces,ga:entranceBounceRate,ga:visitBounceRate,ga:avgTimeOnSite';
         $dimensions = 'ga:date,ga:year,ga:month,ga:day';
 
-      // metrics
+        // metrics
         $_params[] = 'date';
         $_params[] = 'date_year';
         $_params[] = 'date_month';
         $_params[] = 'date_day';
-      // dimensions
+        // dimensions
         $_params[] = 'visits';
         $_params[] = 'pageviews';
         $_params[] = 'bounces';
